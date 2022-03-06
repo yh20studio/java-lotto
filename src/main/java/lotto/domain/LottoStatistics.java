@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.domain.LottoGame.LOTTO_PRICE;
+import static lotto.service.LottoService.LOTTO_PRICE;
 
 import java.util.EnumMap;
 import java.util.List;

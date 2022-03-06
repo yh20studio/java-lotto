@@ -13,7 +13,7 @@ public class LottoTickets {
         this.lottoTickets = createLottoTickets(lottoNumberGenerator, lottoCount);
     }
 
-    private LottoTickets(List<LottoTicket> lottoTickets) {
+    public LottoTickets(List<LottoTicket> lottoTickets) {
         this.lottoTickets = lottoTickets;
     }
 

@@ -1,6 +1,6 @@
 package lottoTest.domain;
 
-import static lotto.domain.LottoGame.LOTTO_PRICE;
+import static lotto.service.LottoService.LOTTO_PRICE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

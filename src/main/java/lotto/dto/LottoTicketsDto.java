@@ -25,6 +25,13 @@ public class LottoTicketsDto {
                 .collect(Collectors.toList());
     }
 
+    public List<LottoTicketDto> getTotalLottoTickets() {
+        List<LottoTicketDto> totalLottoTickets = new ArrayList<>();
+        totalLottoTickets.addAll(manualLottoTickets);
+        totalLottoTickets.addAll(autoLottoTickets);
+        return new ArrayList<>(totalLottoTickets);
+    }
+
     public List<LottoTicketDto> getManualLottoTickets() {
         return new ArrayList<>(manualLottoTickets);
     }
