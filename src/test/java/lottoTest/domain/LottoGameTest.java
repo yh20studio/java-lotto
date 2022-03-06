@@ -6,6 +6,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.LottoGame;
+import lottoTest.LottoTest;
 import org.junit.jupiter.api.Test;
 
 
@@ -15,8 +16,8 @@ class LottoGameTest {
     @Test
     void 수동_로또_주문수에_비해서_금액이_부족한_경우_테스트() {
         List<List<Integer>> manualNumbers = new ArrayList<>();
-        manualNumbers.add(List.of(1, 2, 3, 4, 5, 6));
-        manualNumbers.add(List.of(7, 8, 9, 10, 11, 12));
+        manualNumbers.add(LottoTest.getNumbers());
+        manualNumbers.add(LottoTest.getNumbers());
 
         assertThatThrownBy(() -> new LottoGame(1000, manualNumbers))
                 .isInstanceOf(RuntimeException.class)
@@ -26,7 +27,7 @@ class LottoGameTest {
     @Test
     void 수동_로또를_주문하고_남은금액으로_자동_로또_개수를_게산하는_기능_테스트() {
         List<List<Integer>> manualNumbers = new ArrayList<>();
-        manualNumbers.add(List.of(1, 2, 3, 4, 5, 6));
+        manualNumbers.add(LottoTest.getNumbers());
         LottoGame lottoGame = new LottoGame(2000, manualNumbers);
         lottoGame.billingManualLottoOrder();
 

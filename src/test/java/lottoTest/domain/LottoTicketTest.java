@@ -11,6 +11,7 @@ import lotto.domain.LottoNumber;
 import lotto.domain.LottoTicket;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
+import lottoTest.LottoTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -36,9 +37,8 @@ class LottoTicketTest {
 
     @ParameterizedTest(name = "[{index}] 로또 등수: {3}")
     @MethodSource("provideLottoData")
-    void 로또의_당첨_여부를_판단하는_기능_테스트(List<Integer> winningNumber, int bonusNumber, List<LottoNumber> lottoNumber,
-                                Rank rank) {
-        WinningLotto winningLotto = new WinningLotto(winningNumber, bonusNumber);
+    void 로또의_당첨_여부를_판단하는_기능_테스트(int bonusNumber, List<LottoNumber> lottoNumber, Rank rank) {
+        WinningLotto winningLotto = new WinningLotto(LottoTest.getNumbers(), bonusNumber);
         LottoTicket lottoTicket = new LottoTicket(lottoNumber);
         Rank lottoRank = lottoTicket.getRankBy(winningLotto.getWinningNumbers(),
                 winningLotto.getBonusNumber());
@@ -53,15 +53,9 @@ class LottoTicketTest {
 
     private static Stream<Arguments> provideLottoData() {
         return Stream.of(
-                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), 7,
-                        toLottoNumbers(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                        Rank.FIRST),
-                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), 7,
-                        toLottoNumbers(Arrays.asList(1, 2, 3, 4, 5, 8)),
-                        Rank.THIRD),
-                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), 8,
-                        toLottoNumbers(Arrays.asList(1, 2, 3, 4, 5, 8)),
-                        Rank.SECOND)
+                Arguments.of(7, toLottoNumbers(Arrays.asList(1, 2, 3, 4, 5, 6)), Rank.FIRST),
+                Arguments.of(7, toLottoNumbers(Arrays.asList(1, 2, 3, 4, 5, 8)), Rank.THIRD),
+                Arguments.of(8, toLottoNumbers(Arrays.asList(1, 2, 3, 4, 5, 8)), Rank.SECOND)
         );
     }
 }

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import lotto.domain.LottoNumber;
 import lotto.domain.lottonumbergenerator.LottoNumberGenerator;
 import lotto.domain.lottonumbergenerator.LottoNumberManualGenerator;
+import lottoTest.LottoTest;
 import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("NonAsciiCharacters")
@@ -17,14 +18,13 @@ class LottoNumberManualGeneratorTest {
     @Test
     void 수동_로또를_생성하는_기능_테스트() {
         List<List<Integer>> numbers = new ArrayList<>();
-        List<Integer> inputNumbers = List.of(1, 2, 3, 4, 5, 6);
-        numbers.add(inputNumbers);
+        numbers.add(LottoTest.getNumbers());
         LottoNumberGenerator lottoNumberGenerator = new LottoNumberManualGenerator(numbers);
         List<LottoNumber> lottoNumbers = lottoNumberGenerator.getLottoNumbersBy(1).get(0);
         assertThat(lottoNumbers.stream()
                 .map(LottoNumber::getNumber)
                 .collect(Collectors.toList())
-        ).isEqualTo(inputNumbers);
+        ).isEqualTo(LottoTest.getNumbers());
     }
 
     @Test
@@ -46,6 +46,6 @@ class LottoNumberManualGeneratorTest {
         assertThat(lottoNumbers.stream()
                 .map(LottoNumber::getNumber)
                 .collect(Collectors.toList())
-        ).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        ).isEqualTo(LottoTest.getNumbers());
     }
 }

@@ -8,6 +8,7 @@ import lotto.domain.LottoTickets;
 import lotto.domain.lottonumbergenerator.LottoNumberAutoGenerator;
 import lotto.domain.lottonumbergenerator.LottoNumberGenerator;
 import lotto.domain.lottonumbergenerator.LottoNumberManualGenerator;
+import lottoTest.LottoTest;
 import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("NonAsciiCharacters")
@@ -22,8 +23,8 @@ class LottoTicketsTest {
     @Test
     void 입력한_숫자만큼_수동_로또를_생성하는_기능_테스트() {
         List<List<Integer>> numbers = new ArrayList<>();
-        numbers.add(List.of(1, 2, 3, 4, 5, 6));
-        numbers.add(List.of(7, 8, 9, 10, 11, 12));
+        numbers.add(LottoTest.getNumbers());
+        numbers.add(LottoTest.getNumbers());
 
         LottoNumberGenerator lottoNumberGenerator = new LottoNumberManualGenerator(numbers);
         LottoTickets lottoTickets = new LottoTickets(lottoNumberGenerator, numbers.size());
